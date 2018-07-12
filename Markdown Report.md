@@ -72,25 +72,25 @@ We first define the sorting algorithms using the _Rcpp_ package.
 Now that we have defined our sorting algorithms, in the next step, we wish to find the optimum choice for the cut-off by simulation study, since it is not known and the concept of "small" is pretty vague. We should mention now that we have performed separate simulation studies to compare among different implementations of quick sort, and noted that the one by Hoare is the fastest, at least for random array. We will not include the codes or results of this simulation study in our project, but we will use only Hoare implementation for both quick sort and hybrid sort. Therefore, we define functions in _R_ (by calling the C++ functions) to compute the average run-time of our hybrid algorithm for given choice of the cut-off array size. We run these functions over different choices of cut-off sizes for different array sizes. Then, we apply lowess for each array size to find the interval resulting in higher efficiency in terms of runtime. Finally, we proceed to plot the average run-times against choices of cut-offs for different array sizes for simplify the visualisation.
 
 ### Graphs
-[**Plot 1**](Plot 1.png)
+![**Plot 1**](Plot 1.png)
 
-[**Plot 2**](Plot 2.png)
+![**Plot 2**](Plot 2.png)
 
-[**Plot 3**](Plot 3.png)
+![**Plot 3**](Plot 3.png)
 
-[**Plot 4**](Plot 4.png)
+![**Plot 4**](Plot 4.png)
 
-[**Plot 5**](Plot 5.png)
+![**Plot 5**](Plot 5.png)
 
-[**Plot 6**](Plot 6.png)
+![**Plot 6**](Plot 6.png)
 
-[**Plot 7**](Plot 7.png)
+![**Plot 7**](Plot 7.png)
 
-[**Plot 8**](Plot 8.png)
+![**Plot 8**](Plot 8.png)
 
-[**Plot 9**](Plot 9.png)
+![**Plot 9**](Plot 9.png)
 
-[**Plot 10**](Plot 10.png)
+![**Plot 10**](Plot 10.png)
 
 #### Observations from the Graphs
 + Firstly, we see that there is a sharp fall in all the graphs initially. This proves the effectiveness of the hybrid algorithm over quick sort, as it should be noted that for the choice of cut-off as 1, we are essentially applying quick sort over the entire array. So that steep fall helps us to conclude with confidence that combining the two algorithms is not at all worthless. This is because of the fact that as quick sort is a recursive algorithm, it has a too much of overhead cost for calling itself repeatedly for small arrays.
@@ -119,7 +119,7 @@ Table: **Lowess Results**
 ## Improvement over Quick Sort
 Now, a plausible (and of course perfectly reasonable) question will be how much do we gain from this algorithm or do we gain at all. We have already shown in the previous section that the run-time is significantly improved for hybrid method over quick sort. Now, we wish to see whether this improvement varies with the size of the input array or not. For that purpose, we define a function to calculate the percentage improvement in run-time in hybrid sort over quick sort and plot the results. We now plot these to get an idea of the improvement pattern.
 
-[**Plot 11**](Plot 11.png)
+![**Plot 11**](./Plot 11.png)
 
 ### Explanation of Improvement Pattern
 From the graph, it is evident that hybrid sort always outperforms quick sort comfortably for all the array sizes. But the same graph also reveals that the improvement is decreasing as array size increases. But one should note that the percentage improvement is more than 35% (which is, of course, very significant for practical purposes). The unexpected decreasing trend can be explained by the slow nature of insertion sort algorithm. In hybrid sort, we are using insertion sort over the entire array in the last step. Although, at this step, the array is partially sorted, it should be kept in mind the insertion sort is significantly effective only for small arrays. We use insertion sort to minimise the large overhead cost due to recursive calls of the quick sort for small arrays, but this remedy comes with its own cost that for large arrays, it is intrinsically slow, however partially sorted the array may be. Thus, as array size increases, the run-time for this step also increases.
