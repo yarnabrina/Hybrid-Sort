@@ -1,6 +1,5 @@
-﻿
 #include < Rcpp.h >
-    using namespace Rcpp;
+using namespace Rcpp;
 
 // function to interchange elements of an array at two positions
 void swap(NumericVector array, int first_position, int second_position) {
