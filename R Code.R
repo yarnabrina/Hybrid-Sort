@@ -109,9 +109,11 @@ write.table(
   row.names = "Optimum",
   sep = ","
 )
+lowess_results <- cbind((1:10) * 1e+5, optimum_cutoffs)
+colnames(a) <- c("Array Sizes", "Optimum Cut-offs")
 
 # plot of simulated average run-times
-pdf("Results.pdf")
+png("Plot 1.png")
 plot(
   keys,
   times_1_e_5,
@@ -120,7 +122,11 @@ plot(
   xlab = "Cutoff Used",
   ylab = "Time Taken"
 )
-lines(lowess(keys, times_1_e_5, f = 1 / 3), col = "red")
+lines(lowess(keys, times_1_e_5, f = 1 / 3),
+      col = "red",
+      lwd = 2)
+dev.off()
+png("Plot 2.png")
 plot(
   keys,
   times_2_e_5,
@@ -129,7 +135,11 @@ plot(
   xlab = "Cutoff Used",
   ylab = "Time Taken"
 )
-lines(lowess(keys, times_2_e_5, f = 1 / 3), col = "red")
+lines(lowess(keys, times_2_e_5, f = 1 / 3),
+      col = "red",
+      lwd = 2)
+dev.off()
+png("Plot 3.png")
 plot(
   keys,
   times_3_e_5,
@@ -138,7 +148,11 @@ plot(
   xlab = "Cutoff Used",
   ylab = "Time Taken"
 )
-lines(lowess(keys, times_3_e_5, f = 1 / 3), col = "red")
+lines(lowess(keys, times_3_e_5, f = 1 / 3),
+      col = "red",
+      lwd = 2)
+dev.off()
+png("Plot 4.png")
 plot(
   keys,
   times_4_e_5,
@@ -147,7 +161,11 @@ plot(
   xlab = "Cutoff Used",
   ylab = "Time Taken"
 )
-lines(lowess(keys, times_4_e_5, f = 1 / 3), col = "red")
+lines(lowess(keys, times_4_e_5, f = 1 / 3),
+      col = "red",
+      lwd = 2)
+dev.off()
+png("Plot 5.png")
 plot(
   keys,
   times_5_e_5,
@@ -156,7 +174,11 @@ plot(
   xlab = "Cutoff Used",
   ylab = "Time Taken"
 )
-lines(lowess(keys, times_5_e_5, f = 1 / 3), col = "red")
+lines(lowess(keys, times_5_e_5, f = 1 / 3),
+      col = "red",
+      lwd = 2)
+dev.off()
+png("Plot 6.png")
 plot(
   keys,
   times_6_e_5,
@@ -165,7 +187,11 @@ plot(
   xlab = "Cutoff Used",
   ylab = "Time Taken"
 )
-lines(lowess(keys, times_6_e_5, f = 1 / 3), col = "red")
+lines(lowess(keys, times_6_e_5, f = 1 / 3),
+      col = "red",
+      lwd = 2)
+dev.off()
+png("Plot 7.png")
 plot(
   keys,
   times_7_e_5,
@@ -174,7 +200,11 @@ plot(
   xlab = "Cutoff Used",
   ylab = "Time Taken"
 )
-lines(lowess(keys, times_7_e_5, f = 1 / 3), col = "red")
+lines(lowess(keys, times_7_e_5, f = 1 / 3),
+      col = "red",
+      lwd = 2)
+dev.off()
+png("Plot 8.png")
 plot(
   keys,
   times_8_e_5,
@@ -183,7 +213,11 @@ plot(
   xlab = "Cutoff Used",
   ylab = "Time Taken"
 )
-lines(lowess(keys, times_8_e_5, f = 1 / 3), col = "red")
+lines(lowess(keys, times_8_e_5, f = 1 / 3),
+      col = "red",
+      lwd = 2)
+dev.off()
+png("Plot 9.png")
 plot(
   keys,
   times_9_e_5,
@@ -192,7 +226,11 @@ plot(
   xlab = "Cutoff Used",
   ylab = "Time Taken"
 )
-lines(lowess(keys, times_9_e_5, f = 1 / 3), col = "red")
+lines(lowess(keys, times_9_e_5, f = 1 / 3),
+      col = "red",
+      lwd = 2)
+dev.off()
+png("Plot 10.png")
 plot(
   keys,
   times_1_e_6,
@@ -201,7 +239,9 @@ plot(
   xlab = "Cutoff Used",
   ylab = "Time Taken"
 )
-lines(lowess(keys, times_1_e_6, f = 1 / 3), col = "red")
+lines(lowess(keys, times_1_e_6, f = 1 / 3),
+      col = "red",
+      lwd = 2)
 dev.off()
 
 # function to compute improvement in runtime for a single replication for a user defined input size
@@ -226,7 +266,7 @@ sizes <- seq(1e+5, 1e+7, 1e+5)
 improvement <- sapply(sizes, average_improvement)
 
 # plot of simulated percentage improvement data
-png("Improvement Pattern.png")
+png("Plot 11.png")
 plot(
   sizes,
   improvement,
