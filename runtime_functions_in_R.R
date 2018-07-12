@@ -66,7 +66,7 @@ times <-
     times_9_e_5,
     times_1_e_6
   )
-write.csv(cbind(keys, times), "Results.csv", row.names = FALSE)
+write.csv(cbind(keys, times), "results.csv", row.names = FALSE)
 
 # performing lowess to suggest the optimum
 optimum_cutoff_1_e_5 <-
@@ -104,7 +104,7 @@ optimum_cutoffs <-
   )
 write.table(
   t(optimum_cutoffs),
-  "Results.csv",
+  "results.csv",
   append = TRUE,
   col.names = FALSE,
   row.names = "Optimum",
