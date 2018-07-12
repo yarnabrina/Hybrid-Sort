@@ -15,7 +15,8 @@ comparative_hybrid_runtime <- function(array_size, cutoff)
   sapply(cutoff, single_hybrid_runtime, array_to_be_sorted = simulated_array)
 }
 
-# function to calculate average runtime for user defined array size for different choices of cutoff, average being taken over different replications (optionally user defined)
+# function to calculate average runtime for user defined array size for different choices of cutoff,
+# average being taken over different replications (optionally user defined)
 average_hybrid_runtime <-
   function(array_size, cutoff, replication = 50)
   {
